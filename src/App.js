@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch } from 'react-router-dom';
 import { Home } from './components/Home'
 import Movies from './components/Movies'
 import { Admin } from './components/Admin'
@@ -27,6 +27,9 @@ export default function App() {
                   <Link to="/movies">MOVIES</Link>
                 </li>
                 <li className="list-group-item">
+                  <Link to="/categories">CATEGORIES</Link>
+                </li>
+                <li className="list-group-item">
                   <Link to="/admin">MANAGE CATALOGUE</Link>
                 </li>
               </ul>
@@ -40,6 +43,9 @@ export default function App() {
               </Route>
               <Route path="/movies">
                 <Movies />
+              </Route>
+              <Route exact path="/categories">
+                <CategoryPage />
               </Route>
               <Route path="/admin">
                 <Admin  />
@@ -59,4 +65,18 @@ export default function App() {
 function Movie() {
   let { id } = useParams();
   return <h2>Movie id {id}</h2>
+}
+
+function CategoryPage() { 
+  let { path, url }  = useRouteMatch();
+
+  return (
+    <div>
+      <h2>categories</h2>
+      <ul>
+        <li><Link to={`${path}/drama `}>Drama</Link></li>
+        <li><Link to={`${path}/comedy `}>Comedy</Link></li>
+      </ul>
+    </div>
+  );
 }
