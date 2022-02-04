@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'; 
+import React from 'react'; 
 import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Home } from './components/Home'
 import { Movies } from './components/Movies'
