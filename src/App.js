@@ -1,20 +1,10 @@
 import React, { Component, Fragment } from 'react'; 
 import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Home } from './components/Home'
+import { Movies } from './components/Movies'
+import { Admin } from './components/Admin'
 
 export default function App() {
-
-
-const Home = () => {
-  return <h2>HOME</h2>
-}
-
-const Movies = () => {
-  return <h2>Movies</h2>
-}
-
-const Admin = () => {
-  return <h2>MANAGE CATALOGUE</h2>
-}
 
   return (
     <Router>
@@ -43,7 +33,7 @@ const Admin = () => {
             </nav>
           </div>
 
-          <div className="col-md-2">
+          <div className="col-md-10">
             <Switch>
               <Route path="/movies">
                 <Movies />
