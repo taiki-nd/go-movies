@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch 
 import { Home } from './components/Home'
 import Movies from './components/Movies'
 import { Admin } from './components/Admin'
+import Categories from './components/Categories'
 
 export default function App() {
 
@@ -47,6 +48,16 @@ export default function App() {
               <Route exact path="/categories">
                 <CategoryPage />
               </Route>
+                <Route
+                  exact
+                  path="/categories/drama"
+                  render={(props) => <Categories {...props} title={`Drama`} />}
+                />
+                <Route
+                  exact
+                  path="/categories/comedy"
+                  render={(props) => <Categories {...props} title={`Comedy`} />}
+                />
               <Route path="/admin">
                 <Admin  />
               </Route>
@@ -74,8 +85,8 @@ function CategoryPage() {
     <div>
       <h2>categories</h2>
       <ul>
-        <li><Link to={`${path}/drama `}>Drama</Link></li>
-        <li><Link to={`${path}/comedy `}>Comedy</Link></li>
+        <li><Link to={`${path}/drama`}>Drama</Link></li>
+        <li><Link to={`${path}/comedy`}>Comedy</Link></li>
       </ul>
     </div>
   );
