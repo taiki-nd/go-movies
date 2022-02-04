@@ -4,6 +4,7 @@ import { Home } from './components/Home'
 import Movies from './components/Movies'
 import { Admin } from './components/Admin'
 import Categories from './components/Categories'
+import OneMovie from './components/OneMovie'
 
 export default function App() {
 
@@ -39,9 +40,7 @@ export default function App() {
 
           <div className="col-md-10">
             <Switch>
-              <Route path="/movies/:id">
-                <Movie />
-              </Route>
+              <Route path="/movies/:id" component={OneMovie} />
               <Route path="/movies">
                 <Movies />
               </Route>
