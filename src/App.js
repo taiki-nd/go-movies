@@ -29,7 +29,7 @@ export default function App() {
                   <Link to="/movies">MOVIES</Link>
                 </li>
                 <li className="list-group-item">
-                  <Link to="/genres">CATEGORIES</Link>
+                  <Link to="/genres">GENRES</Link>
                 </li>
                 <li className="list-group-item">
                   <Link to="/admin">MANAGE CATALOGUE</Link>
