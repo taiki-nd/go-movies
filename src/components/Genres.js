@@ -37,17 +37,26 @@ export default class Genres extends Component{
 
   render() {
     const { genres, isLoaded, error } = this.state;
-    return(
-      <>
-        <h2>Genres</h2>
-        <ul>
-          {genres.map((g) => (
-            <li key={g.id}>
-              <Link to={`/genres/${g.id}`}>{g.genre_name}</Link>
-            </li>
-          ))}
-        </ul>
-      </>
-    )
+
+    if (error) {
+      return <div>error: {error.message}</div>
+    }
+
+    if(!isLoaded){
+      return <p>Loading...</p>
+    }else{
+      return(
+        <>
+          <h2>Genres</h2>
+          <ul>
+            {genres.map((g) => (
+              <li key={g.id}>
+                <Link to={`/genres/${g.id}`}>{g.genre_name}</Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
   }
 }
