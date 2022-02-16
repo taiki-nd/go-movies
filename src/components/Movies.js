@@ -14,7 +14,7 @@ export default class Movies extends Component {
     //.then(response => response.json())
     .then(response => {
       console.log("status code is", response.status)
-      if (response.status != 200){
+      if (response.status !== 200){
         let err = Error;
         err.message = "Invalid status code: " + response.status;
         this.setState({error: err});
