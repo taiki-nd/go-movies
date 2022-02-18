@@ -139,7 +139,7 @@ export default class AddEditMovie extends Component{
               className="form-control"
               id="description"
               name="description"
-              value={movie.value}
+              value={movie.description}
               rows="3"
               onChange={this.handleChange}/>
           </div>
