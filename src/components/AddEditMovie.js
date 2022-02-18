@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Input from './form-components/Input'
+import TextArea from './form-components/TextArea'
 
 export default class AddEditMovie extends Component{
 
@@ -171,6 +172,7 @@ export default class AddEditMovie extends Component{
             handleChange={this.handleChange}
           />
 
+          {/*
           <div className="mb-3">
             <label htmlFor="description" className="form-label">
               Description
@@ -184,6 +186,15 @@ export default class AddEditMovie extends Component{
               rows="3"
               onChange={this.handleChange}/>
           </div>
+          */}
+          <TextArea
+            title={"Description"}
+            type={"description"}
+            name={"description"}
+            value={movie.description}
+            rows={3}
+            handleChange={this.handleChange}
+          />
 
           <hr />
 
