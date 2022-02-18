@@ -34,7 +34,7 @@ export default function App() {
                   <Link to="/genres">GENRES</Link>
                 </li>
                 <li className="list-group-item">
-                  <Link to="/admin/add">ADD MOVIE</Link>
+                  <Link to="/admin/movie/0">ADD MOVIE</Link>
                 </li>
                 <li className="list-group-item">
                   <Link to="/admin">MANAGE CATALOGUE</Link>
@@ -53,7 +53,7 @@ export default function App() {
               <Route exact path="/genres">
                 <Genres />
               </Route>
-              <Route path ="/admin/add" component={AddEditMovie} />
+              <Route path ="/admin/movie/:id" component={AddEditMovie} />
               <Route path="/admin">
                 <Admin  />
               </Route>
