@@ -53,7 +53,7 @@ export default class Movies extends Component {
           <ul>
             {movies.map((m) => (
               <li key={m.id}>
-                <Link to={`movies/${m.id}`}>{m.title}</Link>              
+                <Link to={`/movies/${m.id}`}>{m.title}</Link>              
               </li>
             ))}
           </ul>
