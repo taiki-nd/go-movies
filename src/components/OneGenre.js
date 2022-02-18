@@ -36,7 +36,7 @@ export default class OneGenre extends Component{
   };
 
   render() {
-    const { movies, isLoaded, error } = this.state
+    let { movies, isLoaded, error } = this.state
 
     if (!movies){
       movies = [];
