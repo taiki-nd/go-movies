@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Input from './form-components/Input'
 import TextArea from './form-components/TextArea'
+import Select from './form-components/Select'
 
 export default class AddEditMovie extends Component{
 
@@ -22,6 +23,20 @@ export default class AddEditMovie extends Component{
         rating: "",
         description: "",
       },
+      mpaaOptions:[
+        /*
+        {id: 1, value:"G"},
+        {id: 2, value:"PG"},
+        {id: 3, value:"PG13"},
+        {id: 4, value:"R"},
+        {id: 5, value:"NC17"},
+        */
+        {id: "G", value: "G"},
+        {id: "PG", value: "PG"},
+        {id: "PG13", value: "PG13"},
+        {id: "R", value: "R"},
+        {id: "NC17", value: "NC17"},
+      ], 
       isLoaded: false,
       error: null,
     }
@@ -135,6 +150,7 @@ export default class AddEditMovie extends Component{
             handleChange={this.handleChange}
           />
 
+          {/*
           <div className="mb-3">
             <label htmlFor="mpaa_rating" className="form-label">
               MPAA Rating
@@ -148,6 +164,16 @@ export default class AddEditMovie extends Component{
               <option className="form-select" value="NC17">NC17</option>
             </select>
           </div>
+          */}
+
+          <Select 
+            title={"MPAA Rating"}
+            name={"mpaa_rating"}
+            value={movie.mpaa_rating}
+            handleChange={this.handleChange}
+            placeholder={"Chose..."}
+            options={this.state.mpaaOptions}
+          />
 
           {/*
           <div className="mb-3">
