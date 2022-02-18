@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Input from './form-components/Input'
 
 export default class AddEditMovie extends Component{
 
@@ -64,6 +65,7 @@ export default class AddEditMovie extends Component{
             value={movie.id}
             onChange={this.handleChange}
           />
+          {/*
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               Title
@@ -75,8 +77,18 @@ export default class AddEditMovie extends Component{
               name="title"
               value={movie.title}
               onChange={this.handleChange}/>
-          </div>
+          </div> 
+          */}
 
+          <Input
+            title={"Title"}
+            type={"text"}
+            name={"title"}
+            value={movie.title}
+            handleChange={this.handleChange}
+          />
+          
+          {/*
           <div className="mb-3">
             <label htmlFor="release_date" className="form-label">
               Release Date
@@ -89,7 +101,17 @@ export default class AddEditMovie extends Component{
               value={movie.release_date}
               onChange={this.handleChange}/>
           </div>
+          */}
 
+          <Input
+            title={"Release Date"}
+            type={"text"}
+            name={"release_date"}
+            value={movie.release_date}
+            handleChange={this.handleChange}
+          />
+
+          {/*
           <div className="mb-3">
             <label htmlFor="runtime" className="form-label">
               Runtime
@@ -102,6 +124,15 @@ export default class AddEditMovie extends Component{
               value={movie.runtime}
               onChange={this.handleChange}/>
           </div>
+          */}
+
+          <Input
+            title={"Runtime"}
+            type={"text"}
+            name={"runtime"}
+            value={movie.runtime}
+            handleChange={this.handleChange}
+          />
 
           <div className="mb-3">
             <label htmlFor="mpaa_rating" className="form-label">
@@ -117,6 +148,7 @@ export default class AddEditMovie extends Component{
             </select>
           </div>
 
+          {/*
           <div className="mb-3">
             <label htmlFor="rating" className="form-label">
               Rating
@@ -129,6 +161,15 @@ export default class AddEditMovie extends Component{
               value={movie.rating}
               onChange={this.handleChange}/>
           </div>
+          */}
+
+          <Input
+            title={"Rating"}
+            type={"text"}
+            name={"rating"}
+            value={movie.rating}
+            handleChange={this.handleChange}
+          />
 
           <div className="mb-3">
             <label htmlFor="description" className="form-label">
