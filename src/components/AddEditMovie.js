@@ -40,8 +40,22 @@ export default class AddEditMovie extends Component{
   }
 
   handleSubmit = (evt) => {
-    console.log("form was submitted");
     evt.preventDefault();
+
+    const data = new FormData(evt.target);
+    const payload = Object.fromEntries(data.entries());
+    console.log(payload)
+
+    const requestOptions = {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }
+
+    fetch("http://localhost:4000/v1/admin/editmovie", requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
   }
 
   handleChange = (evt) => {
@@ -107,7 +121,6 @@ export default class AddEditMovie extends Component{
     if(!isLoaded){
       return <p>Loading...</p>
     }else{
-      console.log(movie)
       return(
         <>
           <h2>Add/Edit Movie</h2>
