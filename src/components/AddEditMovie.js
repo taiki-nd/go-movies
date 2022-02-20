@@ -61,7 +61,7 @@ export default class AddEditMovie extends Component{
     if (id > 0){
       fetch("http://localhost:4000/v1/movies/" + id)
       .then(response => {
-        if (response.status !==200){
+        if (response.status !== 200){
           let err = Error;
           err.message = "Invalid status code:" + response.status
           this.setState({error: err});
@@ -69,12 +69,13 @@ export default class AddEditMovie extends Component{
         return response.json()
       })
       .then(json => {
+        const releaseDate = new Date(json.movie.release_date);//yyyy-mm-ddT00:00:00Zをyyyy-mm-ddにする
         this.setState(
           {
             movie: {
               id: id,
               title: json.movie.title,
-              release_date: json.movie.release_date,
+              release_date: releaseDate.toISOString().split("T")[0],//yyyy-mm-ddT00:00:00Zをyyyy-mm-ddにする
               runtime: json.movie.runtime,
               mpaa_rating: json.movie.mpaa_rating,
               rating: json.movie.rating,
@@ -106,6 +107,7 @@ export default class AddEditMovie extends Component{
     if(!isLoaded){
       return <p>Loading...</p>
     }else{
+      console.log(movie)
       return(
         <>
           <h2>Add/Edit Movie</h2>
@@ -158,7 +160,7 @@ export default class AddEditMovie extends Component{
 
             <Input
               title={"Release Date"}
-              type={"text"}
+              type={"date"}
               name={"release_date"}
               value={movie.release_date}
               handleChange={this.handleChange}
@@ -265,7 +267,7 @@ export default class AddEditMovie extends Component{
           </form>
 
           <div className="mt-3">
-            <pre>{JSON.stringify(this.state, null, 3)}</pre>
+            <pre>{JSON.stringify(this.state, null, 2)}</pre>
           </div>
         </> 
       )
