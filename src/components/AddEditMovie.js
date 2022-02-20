@@ -33,6 +33,7 @@ export default class AddEditMovie extends Component{
       ], 
       isLoaded: false,
       error: null,
+      errors: [],
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -41,6 +42,18 @@ export default class AddEditMovie extends Component{
 
   handleSubmit = (evt) => {
     evt.preventDefault();
+
+    // client side validation
+    let errors = [];
+    if (this.state.movie.title === "") {
+      errors.push("title");
+    }
+    this.setState({
+      errors: errors
+    });
+    if (errors.length > 0) {
+      return false;
+    }
 
     const data = new FormData(evt.target);
     const payload = Object.fromEntries(data.entries());
@@ -68,6 +81,10 @@ export default class AddEditMovie extends Component{
       }
     }))
 
+  }
+
+  hasError(key){
+    return this.state.errors.indexOf(key) !== -1;
   }
 
   componentDidMount() {
@@ -154,6 +171,9 @@ export default class AddEditMovie extends Component{
               name={"title"}
               value={movie.title}
               handleChange={this.handleChange}
+              className={this.hasError("title") ? "is-invalid" : ""}
+              errDiv={this.hasError("title") ? "text-danger" : "d-none"}
+              errMessage={"Please enter Title"}
             />
             
             {/*
