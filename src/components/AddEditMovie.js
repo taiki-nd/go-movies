@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Input from './form-components/Input'
 import TextArea from './form-components/TextArea'
 import Select from './form-components/Select'
+import Alert from './ui-components/Alert'
 
 export default class AddEditMovie extends Component{
 
@@ -34,6 +35,10 @@ export default class AddEditMovie extends Component{
       isLoaded: false,
       error: null,
       errors: [],
+      alert: {
+        type: "d-none", //className(デフォルトでは表示させない)
+        message: "",
+      }
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -68,6 +73,15 @@ export default class AddEditMovie extends Component{
     .then(response => response.json())
     .then(data => {
       console.log(data)
+      if(data.error){
+        this.setState({
+          alert: {type: "alert-danger", message: data.error.message}
+        })
+      }else{
+        this.setState({
+          alert: {type: "alert-success", message: "Changes success!"}
+        })
+      }
     })
   }
 
@@ -129,7 +143,7 @@ export default class AddEditMovie extends Component{
 
   render(){
 
-    let { movie, isLoaded, error } = this.state
+    let { movie, isLoaded, error, alert } = this.state
 
     if (error) {
       return <div>error: {error.message}</div>
@@ -141,6 +155,10 @@ export default class AddEditMovie extends Component{
       return(
         <>
           <h2>Add/Edit Movie</h2>
+          <Alert 
+            alertType={alert.type}
+            alertMessage={alert.message}
+          />
           <hr />
           <form onSubmit={this.handleSubmit}>
             <input
@@ -298,10 +316,11 @@ export default class AddEditMovie extends Component{
 
             <button className="btn btn-primary">Save</button>
           </form>
-
+          {/*
           <div className="mt-3">
             <pre>{JSON.stringify(this.state, null, 2)}</pre>
           </div>
+          */}
         </> 
       )
     }
