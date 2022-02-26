@@ -101,6 +101,9 @@ export default class App extends Component {
             </div>
             
           </div>
+          <div className="mt-3">
+            <pre>{JSON.stringify(this.state, null, 2)}</pre>
+          </div>
         </div>
       </Router>
     );
