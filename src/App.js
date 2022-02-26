@@ -63,12 +63,17 @@ export default class App extends Component {
                   <li className="list-group-item">
                     <Link to="/genres">GENRES</Link>
                   </li>
-                  <li className="list-group-item">
-                    <Link to="/admin/movie/0">ADD MOVIE</Link>
-                  </li>
-                  <li className="list-group-item">
-                    <Link to="/admin">MANAGE CATALOGUE</Link>
-                  </li>
+                  {this.state.jwt !== "" && (
+                    <>
+                      <li className="list-group-item">
+                        <Link to="/admin/movie/0">ADD MOVIE</Link>
+                      </li>
+                      <li className="list-group-item">
+                        <Link to="/admin">MANAGE CATALOGUE</Link>
+                      </li>
+                    </>
+                  )}
+
                 </ul>
               </nav>
             </div>
