@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Home } from './components/Home'
 import Movies from './components/Movies'
 import { Admin } from './components/Admin'
@@ -67,9 +67,4 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function Movie() {
-  let { id } = useParams();
-  return <h2>Movie id {id}</h2>
 }
