@@ -3,6 +3,7 @@ import Input from './form-components/Input'
 import TextArea from './form-components/TextArea'
 import Select from './form-components/Select'
 import Alert from './ui-components/Alert'
+import { Link } from 'react-router-dom';
 
 export default class AddEditMovie extends Component{
 
@@ -139,6 +140,10 @@ export default class AddEditMovie extends Component{
     }else{
       this.setState({isLoaded: true})
     }
+  }
+
+  confirmDelete = (e) => {
+    console.log(`would you delete movie id ${this.state.movie.id}?`)
   }
 
   render(){
@@ -315,6 +320,14 @@ export default class AddEditMovie extends Component{
             <hr />
 
             <button className="btn btn-primary">Save</button>
+            <Link to="/admin" className="btn btn-warning ms-1">
+              Cansel
+            </Link>
+            {movie.id > 0 &&
+              <a href="#!"  className="btn btn-danger ms-1" onClick={() => this.confirmDelete()}>
+                Delete
+              </a>
+            }
           </form>
           {/*
           <div className="mt-3">
