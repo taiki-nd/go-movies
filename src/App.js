@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Home } from './components/Home'
 import Movies from './components/Movies'
-import { Admin } from './components/Admin'
+import Admin from './components/Admin'
 import OneMovie from './components/OneMovie'
 import Genres from './components/Genres'
 import OneGenre from './components/OneGenre'
