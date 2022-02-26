@@ -7,6 +7,7 @@ import OneMovie from './components/OneMovie'
 import Genres from './components/Genres'
 import OneGenre from './components/OneGenre'
 import AddEditMovie from './components/AddEditMovie'
+import Login from './components/Login'
 
 export default class App extends Component {
 
@@ -88,6 +89,7 @@ export default class App extends Component {
                 <Route exact path="/genres">
                   <Genres />
                 </Route>
+                <Route exact path="/login" component={(props) => <Login {...props} handleJWTChange={this.handleJWTChange} />} />
                 <Route path ="/admin/movie/:id" component={AddEditMovie} />
                 <Route path="/admin">
                   <Admin  />
