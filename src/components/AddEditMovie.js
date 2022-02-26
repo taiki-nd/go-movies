@@ -4,7 +4,8 @@ import TextArea from './form-components/TextArea'
 import Select from './form-components/Select'
 import Alert from './ui-components/Alert'
 import { Link } from 'react-router-dom';
-
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 export default class AddEditMovie extends Component{
 
   constructor(props) {
@@ -144,6 +145,20 @@ export default class AddEditMovie extends Component{
 
   confirmDelete = (e) => {
     console.log(`would you delete movie id ${this.state.movie.id}?`)
+    confirmAlert({
+      title: 'Delete Movie?',
+      message: `would you delete movie id ${this.state.movie.id}?`,
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => alert('Click Yes')
+        },
+        {
+          label: 'No',
+          onClick: () => {}
+        }
+      ]
+    });
   }
 
   render(){
