@@ -90,7 +90,7 @@ export default class App extends Component {
                   <Genres />
                 </Route>
                 <Route exact path="/login" component={(props) => <Login {...props} handleJWTChange={this.handleJWTChange} />} />
-                <Route path ="/admin/movie/:id" component={AddEditMovie} />
+                <Route path ="/admin/movie/:id" component={(props) => <AddEditMovie {...props} jwt={this.state.jwt}/>} />
                 <Route path="/admin">
                   <Admin  />
                 </Route>
