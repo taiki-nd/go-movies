@@ -163,14 +163,29 @@ export default class AddEditMovie extends Component{
         {
           label: 'Yes',
           onClick: () => {
-            fetch("http://localhost:4000/v1/admin/deletemovie/" + this.state.movie.id, {method: "GET"})
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Authorization", "Bearer " + this.props.jwt);
+            fetch("http://localhost:4000/v1/admin/deletemovie/" + 
+              this.state.movie.id,
+              {
+                method: "GET",
+                headers: myHeaders,
+              }
+            )
             .then(response => response.json)
             .then(data => {
               if(data.error){
                 this.setState({
-                  alert: {type: "alert-danger", message: data.error.message}
+                  alert: {
+                    type: "alert-danger",
+                    message: data.error.message,
+                  }
                 })
               }else{
+                this.setState({
+                  alert: { type: "alert-success", message: "Movie deleted!" },
+                });
                 this.props.history.push({
                   pathname: "/admin",
                 });
@@ -306,7 +321,7 @@ export default class AddEditMovie extends Component{
               name={"mpaa_rating"}
               value={movie.mpaa_rating}
               handleChange={this.handleChange}
-              placeholder={"Chose..."}
+              placeholder={movie.mpaa_rating}
               options={this.state.mpaaOptions}
             />
 

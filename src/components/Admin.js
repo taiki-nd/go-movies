@@ -10,6 +10,13 @@ export default class Admin extends Component {
   };
 
   componentDidMount() {
+    //ログインページへのリダイレクト処理
+    if(this.props.jwt === ""){
+      this.props.history.push({
+        pathname: "/login"
+      })
+    }
+    
     fetch("http://localhost:4000/v1/movies")
     //.then(response => response.json())
     .then(response => {
