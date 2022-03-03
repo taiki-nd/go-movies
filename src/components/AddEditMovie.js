@@ -109,6 +109,13 @@ export default class AddEditMovie extends Component{
   }
 
   componentDidMount() {
+    //ログインページへのリダイレクト処理
+    if(this.props.jwt === ""){
+      this.props.history.push({
+        pathname: "/login"
+      })
+    }
+
     const id = this.props.match.params.id;
     if (id > 0){
       fetch("http://localhost:4000/v1/movies/" + id)
