@@ -24,6 +24,7 @@
             title
             runtime
             year
+            description
           }
         }
       `
@@ -58,7 +59,19 @@
           <hr />
           <div className="list-group">
             {movies.map((m) => (
-              <Link key={m.id} to={`/movies/${m.id}`} className="list-group-item list-group-item-action">{m.title}</Link>
+              <>
+                <Link key={m.id} to={`/movies/${m.id}`} className="list-group list-group-item">
+                  <strong>{m.title}</strong>
+                  <br />
+                  <small className="text-muted">
+                    ({m.year})-{m.runtime} minutes
+                  </small>
+                  <br />
+                  {m.description.slice(0, 100)}...
+                </Link>
+                
+              </>
+
             ))}
           </div>
         </>
