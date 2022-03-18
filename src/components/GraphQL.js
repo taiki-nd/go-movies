@@ -123,7 +123,7 @@
           <div className="list-group">
             {movies.map((m) => (
               <>
-                <Link key={m.id} to={`/movies/${m.id}`} className="list-group list-group-item">
+                <Link key={m.id} to={`/movies-graphql/${m.id}`} className="list-group list-group-item">
                   <strong>{m.title}</strong>
                   <br />
                   <small className="text-muted">
